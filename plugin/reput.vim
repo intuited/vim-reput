@@ -10,3 +10,6 @@
 " Bang: With !, calls RePut silently, suppressing error messages
 "   including the warning issued if no previous RePut has been called on this buffer.
 command! -nargs=? -bang RePut call reput#Cmd_RePut(<q-bang>, <f-args>)
+
+" TODO: add a RePutSystem command to avoid having to deal with quoting issues
+"       for the common case of RePutting a system command.

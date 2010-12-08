@@ -1,0 +1,7 @@
+{ "name": "reput",
+  "version": "0.4",
+  "author": "Ted Tibbetts",
+  "description":
+    "Provide convenient refreshing of variable dumps and other expressions.",
+  "status": "beta"
+}
