@@ -19,5 +19,7 @@ command! -nargs=? -bang RePut call reput#Cmd_RePut(<q-bang>, <f-args>)
 " when :RePut is run again in the current buffer.
 " The current buffer's contents
 " are replaced with the output from the system command.
-command! -nargs=1 -bang RePutShell call reput#Cmd_RePut(<q-bang>,
-      \ printf('system(%s)', string(<q-args>)))
+" Completion works in more or less the same way as |:!|.
+command! -nargs=+ -bang -complete=customlist,shell_complete#CustomListComplete RePutShell
+      \ call reput#Cmd_RePut(<q-bang>,
+      \                      printf('system(%s)', string(<q-args>)))

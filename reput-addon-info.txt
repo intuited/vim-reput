@@ -3,5 +3,11 @@
   "author": "Ted Tibbetts",
   "description":
     "Provide convenient refreshing of variable dumps and other expressions.",
-  "status": "beta"
+  "status": "beta",
+  "dependencies": {
+    "shell_complete": {
+      "type": "git",
+      "url": "http://github.com/intuited/shell_complete.git"
+    }
+  }
 }
