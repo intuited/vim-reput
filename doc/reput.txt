@@ -1,0 +1,46 @@
+*reput.txt*  Convenient refreshing of variable dumps and other expressions.
+
+`reput` provides some commands to facilitate working with buffers
+which contain the value of vim expressions.
+
+This functionality exists in the commands |:RePut| and |:RePutShell|.
+
+RePut [{expr}]                          *:RePut*
+        If given an {expr}, replaces the contents of the current buffer
+        with the result of that expression.
+
+        Without an argument, refreshes the contents
+        by re-evaluating the last {expr} for that buffer.
+
+        E.G. >
+            :RePut join(items(g:), "\n")
+<       This will fill the current buffer with a list of all global variables.
+        The list can be updated by simply doing >
+            :RePut
+<       
+        The expression to be RePut is stored in a buffer-local variable.
+        This makes it convenient to maintain
+        a number of different "watch buffers".
+        This is particularly useful in combination with the addon
+        "prettyprint": http://www.vim.org/scripts/script.php?script_id=2860
+
+        This can be useful, for instance, when debugging scripts.
+
+        The position of the cursor is retained across RePuts.
+
+RePutShell {cmd}                       *:RePutShell*
+        Runs the {cmd} as a system command,
+        replacing the contents of the current buffer with the output.
+        Subsequent invocations of |:RePut| will cause this to happen again.
+
+        E.G. >
+            :RePutShell top -bn1
+<       This will fill the buffer with a list of the current top processes.
+        Subsequently executing |:RePut| without arguments will update the list,
+        without moving the cursor.
+
+        Basic completion (similar to that for |:!|) is available.
+
+        Pipes, redirection, etc. can be used
+        as long as the underlying system shell supports them.
+        The command is implemented using |system()| and |<q-args>|.
